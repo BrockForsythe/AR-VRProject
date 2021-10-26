@@ -33,7 +33,7 @@ public class InstantiateObject : MonoBehaviour
         {
             Debug.Log(gamePhase);
             ball.transform.position += Vector3.back * speed * Time.deltaTime;
-            if (ball.transform.position.x == ArmBackBlock.transform.position.x && ball.transform.position.y == ArmBackBlock.transform.position.y && ball.transform.position.z == ArmBackBlock.transform.position.z)
+            if (Input.GetMouseButtonDown(0))
             {
                 Destroy(GameObject.FindWithTag("ball"));
                 Destroy(GameObject.FindWithTag("ArmBack"));
