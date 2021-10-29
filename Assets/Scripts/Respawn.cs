@@ -5,38 +5,31 @@ using UnityEngine;
 public class Respawn : MonoBehaviour
 {
     public GameObject ball;
-    public float xpos = 0;
-    public float ypos = 0;
-    public float zpos = 0;
-    private bool ballExist = false;
-    void Update()
-    {
-        if(ballExist == false)
-        {
-            if (Input.GetKey(KeyCode.W)) //Change to on push method for AR
-            {
-                SpawnBall();
-                ballExist = true;
-            }
-        }
+    public GameObject Spawner;
+    public bool ballExists = false;
 
-        if(ballExist == true)
-        {
-            if(Input.GetKey(KeyCode.M))
-            {
-                DespawnBall();
-                ballExist = false;
-            }
-        }
+    public void Start()
+    {
+        Instantiate(ball, new Vector3(Spawner.transform.position.x, Spawner.transform.position.y, Spawner.transform.position.z), Quaternion.identity);
+        ballExists = true;
+    }
+
+    public void Update()
+    {
+        if(!ballExists)
+            SpawnBall();
+        DespawnBall();
+    }
+
+    public void SpawnBall()
+    {
+        Instantiate(ball, new Vector3(Spawner.transform.position.x, Spawner.transform.position.y, Spawner.transform.position.z), Quaternion.identity);
+    }
+
+    //TODO Check when ball collides with mesh, then wait 3 seconds and destroy
+    public void DespawnBall()
+    { 
+        Destroy(GameObject.FindWithTag("ball"), 5);
         
-    }
-
-    void SpawnBall()
-    {
-        Instantiate(ball, new Vector3(xpos, ypos, zpos), Quaternion.identity);
-    }
-    void DespawnBall()
-    {
-        Destroy(GameObject.FindWithTag("ball"));
     }
 }
