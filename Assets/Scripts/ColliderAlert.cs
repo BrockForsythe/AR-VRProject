@@ -10,16 +10,14 @@ public class ColliderAlert : MonoBehaviour
     public float yPos;
     public float zPos;
     public Transform Ball;
-
-    void Start()
-    {
-        
-    }
+    public bool IsColliding = false;
 
     void Update()
     {
-     
+        if (IsColliding)
+            DespawnBall();
     }
+
     void OnCollisionEnter(Collision coll)
     {
         Debug.Log(block.transform.position);
@@ -27,6 +25,7 @@ public class ColliderAlert : MonoBehaviour
         {
             Debug.Log("You reached the center!");
         }
+
         if (coll.gameObject.tag == "Object")
         {
             Debug.Log("Target Hit");
@@ -34,5 +33,16 @@ public class ColliderAlert : MonoBehaviour
             yPos = Ball.transform.position.y;
             zPos = Ball.transform.position.z;
         }
+
+        if (coll.gameObject.tag == "ground")
+        {
+            IsColliding = true;
+        }
+    }
+
+    //TODO Check when ball collides with mesh, then wait 3 seconds and destroy
+    public void DespawnBall()
+    {
+        Destroy(GameObject.FindWithTag("ball"), 3);
     }
 }

@@ -18,18 +18,10 @@ public class Respawn : MonoBehaviour
     {
         if(!ballExists)
             SpawnBall();
-        DespawnBall();
     }
 
     public void SpawnBall()
     {
         Instantiate(ball, new Vector3(Spawner.transform.position.x, Spawner.transform.position.y, Spawner.transform.position.z), Quaternion.identity);
-    }
-
-    //TODO Check when ball collides with mesh, then wait 3 seconds and destroy
-    public void DespawnBall()
-    { 
-        Destroy(GameObject.FindWithTag("ball"), 5);
-        
     }
 }

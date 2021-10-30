@@ -331,6 +331,7 @@ MonoBehaviour:
   ball: {fileID: 7445689064407289191, guid: c6e9be854af04cb48b02cd9c2e559914, type: 3}
   Spawner: {fileID: 1990488182}
   ballExists: 0
+  IsColliding: 0
 --- !u!4 &1990488184
 Transform:
   m_ObjectHideFlags: 0
@@ -359,7 +360,7 @@ GameObject:
   - component: {fileID: 2056406605}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
