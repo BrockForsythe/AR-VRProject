@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 7.0f;
+    public static float speed = 7.0f;
+    //[SerializeField] float speed = 7.0f;
     float moveVelocity;
 
     // Update is called once per frame
